@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Navbar from "../components/Navbar";
 import Today from "../components/Today";
+import Hourly from '../components/Hourly';
 import "../styles/Home.css";
 
 const Home = () => {
@@ -9,20 +10,25 @@ const Home = () => {
     // State to store weather data
     const [weatherData, setWeatherData] = useState(null);
 
+    // State to store the hourly forecast data
+    const [forecastData, setForecastData] = useState(null);
+
     // State to store the query
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false); // State to track loading status
+    const [units, setUnits] = useState("metric"); // State to track loading status
+    const [degreeType, setDegreeType] = useState("°C")
 
 
     const apiKey = "2b68c5aecd9c2cdfc4368a50bcc2e815";
 
     // const apiKey = "0";
 
-    const getWeatherData = async (lat, long) => {
+    const getWeatherData = async (lat, long, unit = units) => {
         // console.log(lat);
         // console.log(long);
         setLoading(true)
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}`;
 
         try {
             const response = await axios.get(url);
@@ -37,8 +43,18 @@ const Home = () => {
         }
     };
 
-    const getForecastData = async (lat, long) => {
+    const getForecastData = async (lat, long, unit = units) => {
+       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}&cnt=14`;
+
+       try {
+        const response = await axios.get(url);
+        console.log(response.data);
+        setForecastData(response.data);
        
+        } catch (error) {
+            console.error(error);
+            
+        } 
     }
 
     const getCurrentLocation = () => {
@@ -112,11 +128,26 @@ const Home = () => {
         if(coords) {
             const {lat, lon} = coords;
             await getWeatherData(lat, lon);
+            await getForecastData(lat, lon);
         }
 
         setLoading(false); 
     }
 
+    const handleUnitChange = (newUnit) => {
+        if (newUnit != null) {
+            setUnits(newUnit);
+            setDegreeType(newUnit === "metric" ? "°C" : "°F");
+    
+            // Refetch weather data
+            if (weatherData) {
+                const { lat, lon } = weatherData.coord; 
+                getWeatherData(lat, lon, newUnit);
+                getForecastData(lat, lon, newUnit);
+            }
+        }
+    }
+ 
     // get the current weather
     useEffect(() => {
         const getWeatherForCurrentLocation = async () => {
@@ -124,6 +155,7 @@ const Home = () => {
             setLoading(true); 
             const { lat, lon } = await getCurrentLocation();
             await getWeatherData(lat, lon);
+            await getForecastData(lat, lon);
           } catch (error) {
             console.error("Failed to fetch weather data:", error);
           } finally {
@@ -158,13 +190,23 @@ const Home = () => {
                         </div>
         
                         <div className="tempUnit">
-                            <button className="celcius">°C</button>
-                            <button className="fah">°F</button>
+                            <button
+                                className={`unit-btn ${units === "metric" ? "active" : ""}`}
+                                onClick={() => handleUnitChange("metric")}
+                            >°C
+                            </button>
+                            <button
+                                className={`unit-btn ${units === "imperial" ? "active" : ""}`}
+                                onClick={() => handleUnitChange("imperial")}
+                            >°F
+                            </button>
                         </div>
+
                     </div>
             
         
-                    <Today weatherData={weatherData} /> 
+                    <Today weatherData={weatherData} degreeType={degreeType} units={units}/> 
+                    <Hourly forecastData={forecastData} degreeType={degreeType}/>
     
             </>
             )}

@@ -62,26 +62,6 @@
     gap: 10px;
 }
 
-/* .weatherType {
-
-} */
-/* 
-.weatherType p {
-	font-size: 1.2rem;
-	opacity: 0.5;
-	cursor: pointer;
-	text-decoration: none;
-	color: #000000;
-}
-
-.weatherType p:first-child {
-	text-decoration: underline;
-	opacity: 1;
-} */
-
-.loc {
-
-}
 
 .material-icons, .loc h2 {
 	font-size: 2.2rem;
@@ -91,20 +71,18 @@
     margin-top: 0.2rem;
 }
 
-/* .tempUnit {
-	display: flex;
-} */
-
-.tempUnit button {
-	font-size: 1.6rem;
+.unit-btn {
+    font-size: 1.6rem;
 	background-color: #000009; 
 	color: #FFFFFF;
 	padding: 0.5rem;
 	text-align: center;
 	cursor: pointer;
 	border-radius: 50%;
+    opacity: 0.5;
 }
 
-.fah {
-	opacity: 0.5;
+.unit-btn.active {
+    opacity: 1;
 }
+

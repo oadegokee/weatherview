@@ -7,4 +7,5 @@
 body {
 	background-image: url(./assets/clouds.jpg); 
 	background-repeat: no-repeat;
+  overflow-x: hidden;
 }

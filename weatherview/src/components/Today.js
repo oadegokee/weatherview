@@ -2,13 +2,12 @@ import React from "react";
 import "../styles/Today.css";
 
 
-const today = ({ weatherData }) => {
+const today = ({ weatherData, degreeType, units }) => {
     if(weatherData != null) {
-        // Destructure weather data from the props
-        const { dt, main, sys, visibility, weather, wind} = weatherData;
-        const {feels_like, humidity, pressure, temp, temp_max, temp_min} = main;
+        const { dt, main, sys, weather, wind} = weatherData;
+        const {feels_like, humidity, temp, temp_max, temp_min} = main;
         const {sunrise, sunset} = sys;
-        const {speed, deg} = wind;
+        const {speed, gust} = wind;
         const { icon, description }= weather[0];
 
         // Convert dt to date
@@ -46,52 +45,65 @@ const today = ({ weatherData }) => {
                  <div className="weather-details">
 
                     <div className="main-weather-info">
-                        <p className="current-weather">{temp}</p>
+                        <p className="current-weather">{Math.round(temp) + degreeType}</p>
                         <p className="current-date">{formattedDate}</p>
                         <div className="high-low-info">
-                            <p className="currrent-high">H: {temp_max}</p>
-                            <p className="current-low">L: {temp_min}</p>
+                            <p>H: {Math.round(temp_max) + degreeType}</p>
+                            <p>L: {Math.round(temp_min) + degreeType}</p>
                         </div>
                     </div>
                      <div className="current-weather-info">
                         <div className="current-weather-container">
-                            <p className="feels-like-label">Feel Like</p>
-                            <p className="feels-like-value">{feels_like}</p>
+                            <p>Feel Like</p>
+                            <p>{Math.round(feels_like) + degreeType}</p>
                         </div>
                                 
             
                         <div className="current-weather-container">
-                            <p className="riseTime">Sunrise: {formatTime(sunrise)}</p>
-                            <p className="setTime">Sunset: {formatTime(sunset)}</p>
+                            <p>Sunrise: {formatTime(sunrise)}</p>
+                            <p>Sunset: {formatTime(sunset)}</p>
                         </div>
     
                         <div className="current-weather-container">
-                            <p className="windLabel">Wind Status</p>
-                            <p className="windStatus">{speed}</p>
+                            <p>Wind Speed</p>
+                            <p>{Math.round(speed)}
+                                {units === "metric" ? " m/s" : " mph"}
+                            </p>
+                        </div>
+
+                        <div className="current-weather-container">
+                            <p className="">Wind Gust</p>
+                            <p className="">{Math.round(gust)}
+                                {units === "metric" ? " m/s" : " mph"}
+                            </p>
                         </div>
             
                         <div className="current-weather-container">
-                            <p className="humidLabel">Humidity</p>
-                            <p className="humidity">{humidity}</p>
+                            <p>Humidity</p>
+                            <p>{humidity}%</p>
                         </div>
                                 
                         <div className="current-weather-container">
-                            <p className="pLabel">Pressure</p>
-                            <p className="pressure">{pressure}</p>
+                            <p>Pressure</p>
+                            <p>
+                                {units === "metric"
+                                    ? `${weatherData.main.pressure} hPa`
+                                    : `${(weatherData.main.pressure * 0.02953).toFixed(2)} inHg`
+                                }
+                            </p>
                         </div>
                         
-                        <div className="current-weather-container">
-                            <p className="visLabel">Visibility</p>
-                            <p className="visibility">{visibility}</p>
-                        </div>
+                        
                     </div>
                  </div>
 
                  <div className="weather-icon">
+                  
                     <img
                         src={`http://openweathermap.org/img/wn/${icon}@4x.png`}
                         alt={description}
                     />
+                    <p>{description}</p>
 				</div>
             </div>
            
