@@ -1,0 +1,32 @@
+.nav {
+	padding: 1rem;
+	position: fixed;
+	background: #000009;
+	width: 100vw;
+	height: 80px;
+	z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-name {
+	color: #FFFAFA;
+	font-size: 1.8rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.search-input-container {
+	margin: 0 auto;
+    width: 25%;
+}
+
+.search-input {
+    width: 100%;
+	border-radius: 7px;
+	padding: 0.5rem;
+	font-size: 1.2rem;
+    text-align: center;
+}

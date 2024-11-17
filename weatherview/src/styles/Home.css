@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    height: 100vh;
+    margin: 0 auto;
+  
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+    backdrop-filter: blur(3px);
+}
+
+/* Spinner style from css loaders https://cssloaders.github.io/ */
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    } 
+
+  /* Spinner style from css loaders https://cssloaders.github.io/ */
+
+.top-container {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.top-container div {
+    display: flex;
+    gap: 10px;
+}
+
+/* .weatherType {
+
+} */
+/* 
+.weatherType p {
+	font-size: 1.2rem;
+	opacity: 0.5;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000000;
+}
+
+.weatherType p:first-child {
+	text-decoration: underline;
+	opacity: 1;
+} */
+
+.loc {
+
+}
+
+.material-icons, .loc h2 {
+	font-size: 2.2rem;
+}
+
+.material-icons {
+    margin-top: 0.2rem;
+}
+
+/* .tempUnit {
+	display: flex;
+} */
+
+.tempUnit button {
+	font-size: 1.6rem;
+	background-color: #000009; 
+	color: #FFFFFF;
+	padding: 0.5rem;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.fah {
+	opacity: 0.5;
+}
