@@ -20,9 +20,7 @@ const Home = () => {
     const [degreeType, setDegreeType] = useState("°C")
 
 
-    const apiKey = "2b68c5aecd9c2cdfc4368a50bcc2e815";
-
-    // const apiKey = "0";
+    const apiKey = process.env.REACT_APP_API_KEY;
 
     const getWeatherData = async (lat, long, unit = units) => {
         // console.log(lat);
@@ -44,7 +42,7 @@ const Home = () => {
     };
 
     const getForecastData = async (lat, long, unit = units) => {
-       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}&cnt=14`;
+       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}&units=${unit}&cnt=15`;
 
        try {
         const response = await axios.get(url);
