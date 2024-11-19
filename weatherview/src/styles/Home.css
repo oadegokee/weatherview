@@ -47,6 +47,17 @@
 
   /* Spinner style from css loaders https://cssloaders.github.io/ */
 
+.error-message-container {
+    margin-top: 6rem;
+    width: 100%;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: red;
+    text-align: center;
+}
+
 .top-container {
     margin-top: 6rem;
     display: flex;

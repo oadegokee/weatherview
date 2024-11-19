@@ -18,6 +18,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false); // State to track loading status
     const [units, setUnits] = useState("metric"); // State to track loading status
     const [degreeType, setDegreeType] = useState("°C")
+    const [noResultsErrorMessage, setNoResultsErrorMessage] = useState();
 
 
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -109,19 +110,20 @@ const Home = () => {
                 // console.log(lat);
                 return {lat, lon};
             } else {
-                console.log("City or zip code not found");
+                setNoResultsErrorMessage("No results found for \"" + query + "\", please try again");
                 return null;
             }
         } catch (error) {
             console.log (error);
+            setNoResultsErrorMessage("No results found for \"" + query + "\", please try again");
             return null;
         }
     };
 
-    const handleSearch = async () => {
-        if(!query.trim()) return alert("Please enter a city name or zipcode");
+    const handleSearch = async (value = query) => {
+        if(!value.trim()) return alert("Please enter a city name or zipcode");
         setLoading(true);
-        const coords = await getCoordinates(query);
+        const coords = await getCoordinates(value);
 
         if(coords) {
             const {lat, lon} = coords;
@@ -145,6 +147,15 @@ const Home = () => {
             }
         }
     }
+
+    // Hide and show error message
+    const showErrorMessage = () => {
+
+        setTimeout(() => {
+            setNoResultsErrorMessage(null);
+        }, 5000); // hide after 5 seconds
+    };
+
  
     // get the current weather
     useEffect(() => {
@@ -163,7 +174,15 @@ const Home = () => {
       
         getWeatherForCurrentLocation();
       }, []);
-      
+
+   
+    useEffect(() => {
+        // Show the error message
+        if (noResultsErrorMessage) {
+            showErrorMessage();
+        }
+    }, [noResultsErrorMessage]);
+
 
     return (
         <div className='container'>
@@ -178,6 +197,13 @@ const Home = () => {
                 setQuery={setQuery}
                 handleSearch={handleSearch}
             />
+
+            {noResultsErrorMessage != null && (
+                <div className='error-message-container'>
+                     <p className='error-message'>{noResultsErrorMessage}</p>
+                </div>
+               
+            )}
             
             {weatherData != null && (
                 <>

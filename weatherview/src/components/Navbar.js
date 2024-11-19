@@ -64,7 +64,7 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
   return (
     <div className="nav">
 
-      <div>
+      <div className='nav-item'>
         <h2 className="app-name">WeatherView</h2>
       </div>
 
@@ -75,8 +75,7 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
           options={suggestions}
           getOptionLabel={(option) => (typeof option === "string" ? option : option.label)}
           onInputChange={(event, value) => {
-            setQuery(value); // Update query state
-            // getSuggestions(value); // Fetch suggestions
+            setQuery(value) // Update query state
           }}
           onChange={(event, value) => {
             if (value) {
@@ -99,6 +98,8 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
           )}
         />
       </div>
+
+      <div className='nav-item'></div>
     </div>
   );
 };

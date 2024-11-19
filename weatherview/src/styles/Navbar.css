@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.nav-item {
+	width: 30%;
+}
+
 .app-name {
 	color: #FFFAFA;
 	font-size: 1.8rem;
@@ -19,14 +23,15 @@
 }
 
 .search-input-container {
+	width: 40%;
 	margin: 0 auto;
-    width: 25%;
+   
 }
 
 .search-input {
-    width: 100%;
 	border-radius: 7px;
 	padding: 0.5rem;
 	font-size: 1.2rem;
 	background-color: #FFFAFA;
+	margin: 0 auto;
 }
