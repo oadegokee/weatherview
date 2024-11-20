@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/weatherview/static/css/main.7b1ddb54.css",
+    "main.js": "/weatherview/static/js/main.9fb43b1c.js",
+    "static/js/453.18d4f91b.chunk.js": "/weatherview/static/js/453.18d4f91b.chunk.js",
+    "static/media/clouds.jpg": "/weatherview/static/media/clouds.c5d3ef9c2a93c300d424.jpg",
+    "index.html": "/weatherview/index.html",
+    "main.7b1ddb54.css.map": "/weatherview/static/css/main.7b1ddb54.css.map",
+    "main.9fb43b1c.js.map": "/weatherview/static/js/main.9fb43b1c.js.map",
+    "453.18d4f91b.chunk.js.map": "/weatherview/static/js/453.18d4f91b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b1ddb54.css",
+    "static/js/main.9fb43b1c.js"
+  ]
+}
