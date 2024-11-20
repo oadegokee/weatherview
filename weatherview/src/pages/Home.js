@@ -31,7 +31,6 @@ const Home = () => {
 
         try {
             const response = await axios.get(url);
-            console.log(response.data);
             setWeatherData(response.data);
            
         } catch (error) {
@@ -47,7 +46,6 @@ const Home = () => {
 
        try {
         const response = await axios.get(url);
-        console.log(response.data);
         setForecastData(response.data);
        
         } catch (error) {
@@ -198,12 +196,7 @@ const Home = () => {
                 handleSearch={handleSearch}
             />
 
-            {noResultsErrorMessage != null && (
-                <div className='error-message-container'>
-                     <p className='error-message'>{noResultsErrorMessage}</p>
-                </div>
-               
-            )}
+          
             
             {weatherData != null && (
                 <>
@@ -212,6 +205,13 @@ const Home = () => {
                             <i className="material-icons">place</i>
                             <h2 className="location">{weatherData.name}</h2>
                         </div>
+
+                        {noResultsErrorMessage != null && (
+                            <div className='error-message-container'>
+                                <p className='error-message'>{noResultsErrorMessage}</p>
+                            </div>
+                        
+                        )}
         
                         <div className="tempUnit">
                             <button

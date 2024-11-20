@@ -38,10 +38,11 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
                 value: feature.properties.postcode,
             };
         }
+
       });
 
        // Remove duplicates
-       const uniqueSuggestions = [
+      const uniqueSuggestions = [
         ...new Map(suggestionsData.map((item) => [item.label, item])).values()
       ];
 
@@ -64,7 +65,7 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
   return (
     <div className="nav">
 
-      <div className='nav-item'>
+      <div className='nav-item nav-item-app-name'>
         <h2 className="app-name">WeatherView</h2>
       </div>
 
@@ -73,27 +74,34 @@ const Navbar = ({ query, setQuery, handleSearch }) => {
         <Autocomplete
           freeSolo // Allow custom input
           options={suggestions}
+
           getOptionLabel={(option) => (typeof option === "string" ? option : option.label)}
+
           onInputChange={(event, value) => {
             setQuery(value) // Update query state
           }}
+
           onChange={(event, value) => {
             if (value) {
               handleSearch(value.label); // Trigger search on option select
             }
           }}
+
           renderInput={(params) => (
+
             <TextField
               {...params}
               placeholder="Enter city or zip code"
               variant="outlined"
               size="small"
               className="search-input"
+
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   handleSearch(query); // Trigger search on Enter key
                 }
               }}
+              
             />
           )}
         />

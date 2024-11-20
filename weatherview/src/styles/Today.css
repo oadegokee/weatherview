@@ -83,3 +83,129 @@
 	height: 350px;
 }
 
+@media (max-width: 768px) {
+    .weather-icon {
+        display: none;
+         
+     }
+
+     .today-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .weather-details {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 687px) {
+    .main-weather-info p {
+        font-size: 1.8rem;
+    }
+    
+    .current-weather {
+        font-size: 3.2rem !important;
+    }
+
+    .high-low-info {
+       margin-top: 2px;
+    }
+
+    .high-low-info p {
+        font-size: 1.3rem;
+    }
+
+    .current-weather-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px
+    
+    }
+    .current-weather-info{ 
+        margin-top: 10px;
+    }
+    
+    .current-weather-container {
+        margin-bottom: 0.3rem;
+        text-align: center;
+        background: #000009;
+        color: #FFFAFA;
+        padding: 0.3rem;
+        width: 250px;
+    }
+    
+    .current-weather-container p {
+        font-size: 1.2rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 510px) {
+    .main-weather-info p {
+        font-size: 1.4rem;
+    }
+    
+    .current-weather {
+        font-size: 2.8rem !important;
+    }
+
+    .high-low-info {
+       margin-top: 2px;
+    }
+
+    .high-low-info p {
+        font-size: 1rem;
+    }
+
+    .current-weather-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px
+    
+    }
+    .current-weather-info{ 
+        margin-top: 10px;
+    }
+    
+    .current-weather-container {
+        margin-bottom: 0.3rem;
+        text-align: center;
+        background: #000009;
+        color: #FFFAFA;
+        padding: 0.3rem;
+        width: 200px;
+    }
+    
+    .current-weather-container p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .current-weather-container {
+        margin-bottom: 0.3rem;
+        padding: 0.3rem;
+        width: 150px;
+    }
+}
+
+@media (max-width: 510px) and (max-height: 932px) {
+    .weather-details {
+        gap: 20px;
+    }
+
+    .current-weather-container {
+        margin-bottom: 1rem;
+    }
+}
+
+
+

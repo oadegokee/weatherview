@@ -35,3 +35,40 @@
 	background-color: #FFFAFA;
 	margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+    .nav {
+		padding: 0.5rem;
+		height: 90px;
+		z-index: 10;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.nav-item {
+		display: none;
+	}
+
+	.nav-item-app-name {
+		display: flex;
+		width: 100%;
+	}
+	
+	.app-name {
+		font-size: 1.2rem;
+	}
+	
+	.search-input-container {
+		width: 100%;
+		margin: 0 auto;
+	   
+	}
+	
+	.search-input {
+		border-radius: 7px;
+		padding: 0.5rem;
+		font-size: 1rem;
+	}
+}

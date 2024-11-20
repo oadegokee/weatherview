@@ -49,3 +49,52 @@
     width: 100%;
     height: auto;
 }
+
+@media (max-width: 687px) {
+   
+}
+
+@media (max-width: 510px) {
+    .forecast-info > p {
+        font-size: 1.1rem;
+    }
+    
+    .forecast-item-container {
+        gap: 20px;
+        padding: 5px 10px; 
+    }
+    
+    .forecast-item {
+        width: 5rem;
+        padding: 0.5rem 1rem;
+        min-width: 5rem;
+    }
+    
+    .forecast-item p {
+        font-size: 1.1rem;
+    }
+    
+}
+
+@media (max-width: 400px) {
+   
+}
+
+@media (max-width: 510px) and (max-height: 932px) {
+    .forecast-item-container {
+        display: flex;
+        height: 10rem;
+    }
+
+    .forecast-info > p {
+        margin-left: 10px;
+    }
+
+    .forecast-item {
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        height: 120px;
+    }
+}
+
+

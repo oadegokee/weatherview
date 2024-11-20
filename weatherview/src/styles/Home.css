@@ -36,25 +36,27 @@
     animation: rotation 1s linear infinite;
 }
 
-    @keyframes rotation {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    } 
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
 
-  /* Spinner style from css loaders https://cssloaders.github.io/ */
+/* Spinner style from css loaders https://cssloaders.github.io/ */
 
 .error-message-container {
-    margin-top: 6rem;
-    width: 100%;
+    background-color: white;
+    border: 5px red solid;
 }
 
 .error-message {
     font-size: 1.2rem;
-    color: red;
+    font-weight: bold;
+    padding: 10px;
+    color: black;
     text-align: center;
 }
 
@@ -95,5 +97,35 @@
 
 .unit-btn.active {
     opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .material-icons, .loc h2 {
+        font-size: 1.8rem;
+    }
+    
+    .unit-btn {
+        font-size: 1.2rem;
+    }
+    
+
+}
+
+@media (max-width: 510px) { 
+    .material-icons, .loc h2 {
+        font-size: 1.5rem;
+    }
+    
+    
+    .unit-btn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 510px) and (max-height: 932px) {
+    
+    .top-container {
+        margin-top: 7rem;
+    }
 }
 
