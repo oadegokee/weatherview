@@ -81,12 +81,12 @@ const Home = () => {
         let url = ``;
         if(isNaN(query)) {
             // city name url
-            url = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${apiKey}`;
+            url = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${apiKey}`;
             // console.log(url);
         }
         else {
             // zip code url
-            url = `http://api.openweathermap.org/geo/1.0/zip?zip=${query}&appid=${apiKey}`;
+            url = `https://api.openweathermap.org/geo/1.0/zip?zip=${query}&appid=${apiKey}`;
             // console.log(url);
         }
 

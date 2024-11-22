@@ -26,7 +26,7 @@ const Hourly = ({ forecastData, degreeType }) => {
                             <div key={index} className="forecast-item">
                                 <p>{formatTime(dt_txt)}</p>
                                 <img
-                                    src={`http://openweathermap.org/img/wn/${weatherIcon}.png`}
+                                    src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
                                     alt={weather[0].description}
                                 />
                                 <p>{Math.round(temp)}{degreeType}</p>

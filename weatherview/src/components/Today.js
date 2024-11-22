@@ -10,6 +10,7 @@ const today = ({ weatherData, degreeType, units }) => {
         const {speed, gust} = wind;
         const { icon, description }= weather[0];
 
+
         // Convert dt to date
         const date = new Date(dt * 1000); 
 
@@ -73,8 +74,8 @@ const today = ({ weatherData, degreeType, units }) => {
 
                         <div className="current-weather-container">
                             <p className="">Wind Gust</p>
-                            <p className="">{Math.round(gust)}
-                                {units === "metric" ? " m/s" : " mph"}
+                            <p className="">
+                                {gust ? `${Math.round(gust)} ${units === "metric" ? "m/s" : "mph"}` : "N/A"}
                             </p>
                         </div>
             
@@ -100,7 +101,7 @@ const today = ({ weatherData, degreeType, units }) => {
                  <div className="weather-icon">
                   
                     <img
-                        src={`http://openweathermap.org/img/wn/${icon}@4x.png`}
+                        src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
                         alt={description}
                     />
                     <p>{description}</p>
